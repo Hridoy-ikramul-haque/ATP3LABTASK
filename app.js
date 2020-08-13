@@ -1,44 +1,30 @@
-//declaration
-var express = require('express');
-var login = require('./controllers/login');
+var express 	= require('express');
+var exSession 	= require('express-session');
+var bodyParser 	= require('body-parser');
+var login   = require('./controllers/login');
+var app 		= express();
 
-var logout = require('./controllers/logout');
-
-
-
-
-var ejs = require('ejs');
-var bodyParser = require('body-parser');
-var app = express();
-var expressSession = require('express-session');
-
-//configuration
+//config
 app.set('view engine', 'ejs');
-app.use('/css', express.static('css'));
-
-app.use('/img', express.static('img'));
 
 
-//middleware 
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
-app.use(expressSession({secret: 'my secret value', saveUninitialized:true, resave: false}));
 
 
-//app.use(bodyParser());
-
-app.use('/login', login);
-
-//app.use('/logout', logout);
+//middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(exSession({secret: 'my secret value', saveUninitialized: true, resave: false}));
 
 
-//routes
-app.get('/', function (req, res) {
-	res.send('welcome');
+/*app.get('/admin/user/:abc/:name', function(req, res){
+	res.send(req.params.abc+" | "+req.params.name);
+});*/
+
+app.use('/login',login);
+
+app.get('/', function(req, res){
+    res.redirect('/login');
 });
 
-//server startup
-app.listen(3000, function () {
-	console.log('node server started at 3000!');
+app.listen(3000, function(){
+    console.log('express http server started at...3000');
 });
