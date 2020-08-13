@@ -6,6 +6,7 @@ router.get('/', function(req, res){
     if(req.session.username!=null){
         employeeModel.getAll(function (results){
             var data ={results:results}
+            console.log(data);
             res.render('admin/index',data);
         });
 
@@ -20,6 +21,29 @@ router.post('/', function(req, res){
 
 
 
+});
+
+router.get('/addEmployee',function (req,res){
+    if(req.session.username!=null){
+
+            res.render('admin/addEmp');
+
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
+router.post('/addEmployee',function (req,res){
+    console.log(req.body);
+    employeeModel.insert(req.body,function (status) {
+        if(status){
+            res.redirect('/admin');
+        }
+        else{
+            res.send('Server error');
+        }
+    });
 });
 
 module.exports = router;
