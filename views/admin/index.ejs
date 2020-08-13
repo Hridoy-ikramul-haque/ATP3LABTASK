@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin page</title>
+</head>
+<body>
+<h1>Welcome Admin!</h1>
+<button type="button" name="addEmp" id="addEmp" onclick="toAddEmployee()">Add Employee</button><br/>
+<button type="button" name="allEmpList" id="allEmpList" onclick="toAllEmployee()">All Employee List</button><br/>
+
+<h1>All Employee list</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>Designation</th>
+    </tr>
+    <% results.forEach(function (emp) { %>
+        <tr><td><%= emp.id %></td>
+            <td><%= emp.empName %></td>
+            <td><%= emp.empPhone %></td>
+            <td><%= emp.empGender %></td>
+            <td><%= emp.empDesignation %></td>
+    <% }) %>
+</table>
+
+<a href="/logout">Logout</a>
+<script>
+    function toAddEmployee() {
+        window.location.href="/admin/addEmployee";
+    }
+    function toAllEmployee() {
+        window.location.href="/admin/allEmployeeList";
+    }
+</script>
+</body>
+</html>
