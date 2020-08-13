@@ -1,5 +1,5 @@
 {
-  "name": "multi_client_website",
+  "name": "ATP3mid LAB exam",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hridoy-ikramul-haque/multi_client_website.git"
+    "url": "git+https://github.com/Hridoy-ikramul-haque/ATP3mid-LAB-exam.git"
   },
   "author": "hridoy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Hridoy-ikramul-haque/multi_client_website/issues"
+    "url": "https://github.com/Hridoy-ikramul-haque/ATP3mid-LAB-exam/issues"
   },
-  "homepage": "https://github.com/Hridoy-ikramul-haque/multi_client_website#readme",
+  "homepage": "https://github.com/Hridoy-ikramul-haque/ATP3mid-LAB-exam#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.1.3",
