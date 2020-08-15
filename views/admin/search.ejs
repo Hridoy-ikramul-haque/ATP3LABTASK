@@ -1,0 +1,90 @@
+<html>
+<head>
+<script type="application/javascript" src="/jquery/jquery.min.js"></script>
+</head>
+<body>
+        <legend>Search Employee</legend>
+        <table >
+
+            <tr>
+                <td><input type="text" name="searchString" id="searchString" placeholder="Search Employee by ID or Name"></td>
+                <td><button id="btnSearch">Search</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="err" style="color: darkred"></div>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+
+        </table>
+
+        <table width="50%" align="center">
+            <caption id="caption"></caption>
+            <thead id="header">
+
+            </thead>
+            <tbody id="content" style="text-align: center">
+
+            </tbody>
+        </table>
+
+
+
+<script>
+
+    $(document).ready(function (){
+
+        $('#btnSearch').on('click',function (){
+            var searchString=$('#searchString').val();
+            if(isEmpty(searchString)){
+                $('#err').html('');
+                $.get('/admin/search/'+searchString,function (data,status) {
+                    console.log(data);
+                    if(data.length==0){
+                        $('#caption').html('No Search Result!!');
+                        $('#header').html('');
+                        $('#content').html('');
+                    }
+                    else {
+                        var header='<th>ID</th>' +
+                            '<th>Name</th>' +
+                            '<th>Phone</th>' +
+                            '<th>Gender</th>' +
+                            '<th>Designation</th>';
+                        $('#header').html(header);
+                        var html='';
+                        for(var i=0;i<data.length;i++){
+                            html+='<tr>' +
+                                '<td>'+data[i].empId+'</td>' +
+                                '<td>'+data[i].Name+'</td>' +
+                                '<td>'+data[i].Phone+'</td>' +
+                                '<td>'+data[i].gender+'</td>' +
+                                '<td>'+data[i].designation+'</td>' +
+                                '</tr>';
+                        }
+                        $('#content').html(html);
+                        $('#caption').html(data.length+' Result found!!');
+                    }
+                });
+            }
+            else {
+                $('#err').html('Error: Empty Search string!!');
+            }
+        });
+
+
+        function isEmpty(str){
+            if(str.trim().length==0 || str.length==0){
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    });
+</script>
+</body>
+</html>
