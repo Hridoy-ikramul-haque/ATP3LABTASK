@@ -1,0 +1,103 @@
+<html>
+<head>
+
+</head>
+<body>
+<form method="post" action="/admin/addEmployee" onsubmit="return validation()">
+    <fieldset>
+        <legend>Add Employee</legend>
+        <table>
+
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>
+                    <input type="text" name="username" id="username"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" id="password"/></td>
+
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="phone" id="phone"/></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <select name="gender" >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Designation</td>
+                <td>
+                    <select name="designation">
+                        <option>Intern</option>
+                        <option>Software Engineer</option>
+                        <option>Project Manager</option>
+                        <option>Director</option>
+                        <option>CEO</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add Employee"></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+<a href="/logout">Logout</a>
+
+<script>
+    function validation(){
+
+        var name=(document.getElementById('name')).value;
+        var username=document.getElementById('username').value;
+        var password=document.getElementById('password').value;
+        var phone=document.getElementById('phone').value;
+
+        if(isEmpty(name) && isEmpty(username) && isEmpty(password) && isEmpty(phone)){
+            if(username.length<8){
+                alert("Username should be at least 8 characters");
+                return false;
+            }
+            else if(phone.length!=11){
+                alert("Phone Number not less or\n" +
+                    "greater than 11 numbers")
+                return false;
+            }
+            else if(password.length<8){
+                alert("password should be at least 8 characters");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else{
+            alert("all fields are required");
+            return false;
+        }
+
+    }
+
+    function isEmpty(str){
+        if(str.trim().length==0 || str.length==0){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+</body>
+</html>

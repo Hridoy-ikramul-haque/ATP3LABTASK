@@ -1,0 +1,73 @@
+<html>
+<head>
+
+</head>
+<body>
+<form method="post" action="/admin/update/<%= empId %>" onsubmit="return confirmUpdate()">
+    <fieldset>
+        <legend>Update Employee</legend>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td><%= empId %></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" value="<%= Name %>"></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="username" value="<%= username %>" disabled></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" value="<%= password %>"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="phone" value="<%= Phone %>"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <select name="gender" value="<%= gender %>">
+                        <option selected hidden><%= gender %></option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Designation</td>
+                <td>
+                    <select name="designation">
+                        <option selected hidden><%= designation %></option>
+                        <option>Intern</option>
+                        <option>Software Engineer</option>
+                        <option>Project Manager</option>
+                        <option>Director</option>
+                        <option>CEO</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+<a href="/logout">Logout</a>
+<script>
+    function confirmUpdate(){
+
+        var r=confirm('Are you sure to update employee profile?');
+        if(r==true){
+            return true;
+        }else {
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

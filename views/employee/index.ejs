@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee page</title>
+</head>
+<body>
+<h1>Welcome <%=results.Name%>!!</h1>
+<button type="button" name="myProfile" id="myProfile" onclick="toMyProfile()">My Profile</button><br/>
+<button type="button" name="updateProfile" id="UpdateProfile" onclick="toUpdateProfile()">Update Profile</button><br/>
+<a href="/logout">Logout</a>
+
+<script>
+    function toMyProfile() {
+        window.location.href="/employee/myProfile";
+    }
+    function toUpdateProfile() {
+        window.location.href="/employee/updateProfile";
+    }
+</script>
+</body>
+</html>
